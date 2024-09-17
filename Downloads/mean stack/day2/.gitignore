@@ -1,4 +1,3 @@
-NTI-ecommerce-Api/node_modules
-NTI-ecommerce-Api/.env
-NTI-ecommerce-Api/dist
-typescript/dist
+node_models
+.env
+dist
