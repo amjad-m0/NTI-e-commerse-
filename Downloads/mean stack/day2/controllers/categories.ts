@@ -1,8 +1,16 @@
-import {NextFunction,Request,Response} from "express";
-import  categoriesModel  from '../models/categoriesModels';
+import { Request,Response,NextFunction } from "express";
+import categoriesModel from "../models/categoriesModel";
 import asyncHandler from "express-async-handler";
-import { Categories } from "../interface/categories";
-export const getAllCategories = asyncHandler (async(req:Request,res:Response,next: NextFunction)=>{
-    const categories:Categories[] = await categoriesModel.find()
-    res.status(200).json({data:categories})
-})
+import { Categories } from "../interfaces/categories";
+import { createOne, deleteOne, getAll, getOne, updateOne } from "./refactorHandling";
+
+export const getAllCategories = getAll<Categories>(categoriesModel,'categories')
+
+export const createCategory = createOne <Categories> (categoriesModel )
+
+export const getCategory = getOne <Categories> (categoriesModel)
+
+export const updateCategory = updateOne <Categories> (categoriesModel )
+
+export const deleteCategory = deleteOne <Categories> (categoriesModel )
+
